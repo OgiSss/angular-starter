@@ -29,13 +29,13 @@ import { LayoutComponent } from './layout/layout.component';
     HeaderModule,
     MatListModule,
     MatIconModule,
-    RouterModule,
     MatButtonModule,
-    CommonModule,
     MatMenuModule,
     MatSelectModule,
+    MatSidenavModule,
+    RouterModule,
+    CommonModule,
     FormsModule,
-    MatSidenavModule
   ],
   exports: [
     HeaderModule,
@@ -43,7 +43,15 @@ import { LayoutComponent } from './layout/layout.component';
     FooterComponent,
     SettingsMenuComponent,
     DateMenuComponent,
-    LayoutComponent
+    LayoutComponent,
+    MatListModule,
+    MatIconModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatSelectModule,
+    MatSidenavModule,
+    CommonModule
+
   ]
 })
 export class SharedModule { }

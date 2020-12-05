@@ -29,9 +29,8 @@
               "./node_modules/ngx-toastr/toastr.css",
               "src/custom-theme.scss"
             ],
-            "scripts": [
-              "node_modules/apexcharts/dist/apexcharts.min.js"
-            ]
+            "allowedCommonJsDependencies": ["apexcharts", "echarts"],
+            "scripts": ["node_modules/apexcharts/dist/apexcharts.min.js"]
           },
           "configurations": {
             "production": {

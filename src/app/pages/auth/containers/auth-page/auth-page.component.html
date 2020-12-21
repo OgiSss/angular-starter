@@ -16,7 +16,7 @@
             <div class="auth-page__border-line"></div>
           </div>
 
-          <app-login-form (sendLoginForm)="sendLoginForm()"></app-login-form>
+          <app-login-form (sendLoginForm)="sendLoginForm($event.email,$event.password)"></app-login-form>
 
         </mat-tab>
         <mat-tab label="New User">
@@ -39,7 +39,7 @@
         </mat-tab>
       </mat-tab-group>
 
-      <p class="auth-page__footer-title">© 2014-{{todayDate | year}} <a href="javascript:void(0)"></a></p>
+      <p class="auth-page__footer-title"> <a href="javascript:void(0)"></a></p>
     </div>
   </div>
   <div class="auth-page__logo">

@@ -1,4 +1,9 @@
+
 export const environment = {
+  appName: 'Angular Ngrx Material Starter',
+  envName: 'PROD',
   production: true,
-  hmr: false
+  test: false,
+  i18nPrefix: '/angular-starter',
 };
+

@@ -15,6 +15,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SettingsMenuComponent } from './ui-elements/settings-menu/settings-menu.component';
 import { DateMenuComponent } from './ui-elements/date-menu/date-menu.component';
 import { LayoutComponent } from './layout/layout.component';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { LayoutComponent } from './layout/layout.component';
   imports: [
     HeaderModule,
     MatListModule,
+    MatCardModule,
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
@@ -36,21 +38,31 @@ import { LayoutComponent } from './layout/layout.component';
     RouterModule,
     CommonModule,
     FormsModule,
+    MatCardModule,
+    MatButtonModule,
   ],
   exports: [
+    CommonModule,
+    FormsModule,
+   
     HeaderModule,
     SidebarComponent,
     FooterComponent,
+
     SettingsMenuComponent,
     DateMenuComponent,
     LayoutComponent,
+
+
+    MatCardModule,
+    MatCardModule,
+    MatButtonModule,
     MatListModule,
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
     MatSelectModule,
     MatSidenavModule,
-    CommonModule
 
   ]
 })

@@ -2,18 +2,19 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from
 import { Injectable } from '@angular/core';
 
 import { routes } from '../../../consts';
+import { LocalStorageKeysEnum } from '@oksoftware/shared/enums/local-storage.enum';
+import { LocalStorageService } from '@oksoftware/core/core.module';
 
-@Injectable()
-export class AuthGuard implements CanActivate{
+@Injectable({ providedIn: 'root' })
+export class AuthGuard implements CanActivate {
   public routers: typeof routes = routes;
 
-  constructor(private router: Router) {
-  }
+  constructor(private router: Router, private localStorageService: LocalStorageService) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    const token = localStorage.getItem('token');
+    const user = JSON.parse(this.localStorageService.getItem(LocalStorageKeysEnum.USER));
 
-    if (token) {
+    if (user) {
       return true;
     } else {
       this.router.navigate([this.routers.LOGIN]);

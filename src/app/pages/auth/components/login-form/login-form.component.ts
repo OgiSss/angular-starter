@@ -7,10 +7,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login-form.component.scss']
 })
 export class LoginFormComponent implements OnInit {
-  @Output() sendLoginForm = new EventEmitter<void>();
+  @Output() sendLoginForm = new EventEmitter<{ email: string, password: string }>();
   public form: FormGroup;
   public email = '';
-  public password = 'admin';
+  public password = '';
 
   public ngOnInit(): void {
     this.form = new FormGroup({
@@ -21,7 +21,7 @@ export class LoginFormComponent implements OnInit {
 
   public login(): void {
     if (this.form.valid) {
-      this.sendLoginForm.emit();
+      this.sendLoginForm.emit({ email: this.form.get('email').value, password: this.form.get('password').value });
     }
   }
 }

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "authetication-f393a": {
+      "hosting": {
+        "angular-starter": [
+          "authetication-f393a"
+        ]
+      }
+    }
+  }
+}

@@ -1,15 +1,15 @@
-import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { DashboardPageComponent } from './pages/dashboard/containers';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import {AuthGuard} from './pages/auth/guards';
+import { AuthGuard } from './pages/auth/guards';
 
 const routes: Routes = [
   {
     path: 'dashboard',
+    loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule),
     pathMatch: 'full',
     canActivate: [AuthGuard],
-    component: DashboardPageComponent
   },
   {
     path: 'typography',
@@ -51,7 +51,6 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      useHash: true,
       preloadingStrategy: PreloadAllModules
     })
   ],

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { from, Observable, of } from 'rxjs';
 
 import { User } from '../models';
 
@@ -7,8 +8,8 @@ import { User } from '../models';
   providedIn: 'root'
 })
 export class AuthService {
-  public login(): void {
-    localStorage.setItem('token', 'token');
+  public login(email: string, password: string) {
+    return from(this.fireAuth.signInWithEmailAndPassword(email, password));
   }
 
   public sign(): void {
@@ -24,5 +25,9 @@ export class AuthService {
       name: 'John',
       lastName: 'Smith'
     });
+  }
+
+  constructor(private fireAuth: AngularFireAuth) {
+
   }
 }

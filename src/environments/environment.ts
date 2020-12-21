@@ -1,10 +1,18 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
-
 export const environment = {
+  appName: 'Angular Ngrx Material Starter',
+  hmr: false,
+  envName: 'DEV',
   production: false,
-  hmr: false
+  test: false,
+  i18nPrefix: '',
+  firebase: {
+    apiKey: "AIzaSyBP7Mjh8EBOEcSSQHSF3zWP-0TdTeZeuLc",
+    authDomain: "authetication-f393a.firebaseapp.com",
+    projectId: "authetication-f393a",
+    storageBucket: "authetication-f393a.appspot.com",
+    messagingSenderId: "99403673367",
+    appId: "1:99403673367:web:9cb400a168dfbe377ad152"
+  }
 };
 
 /*

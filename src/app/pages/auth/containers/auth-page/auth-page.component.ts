@@ -3,7 +3,9 @@ import { Router } from '@angular/router';
 
 import { AuthService } from '../../services';
 import { routes } from '../../../../consts';
-
+import { Store } from '@ngrx/store';
+import { AuthState } from '../../store/models/auth.models';
+import * as fromActions from '../../store/actions/auth.actions';
 @Component({
   selector: 'app-auth-page',
   templateUrl: './auth-page.component.html',
@@ -15,13 +17,14 @@ export class AuthPageComponent {
 
   constructor(
     private service: AuthService,
-    private router: Router
+    private router: Router,
+    private store: Store<AuthState>
   ) { }
 
-  public sendLoginForm(): void {
-    this.service.login();
+  public sendLoginForm(email: string, password: string): void {
+    this.store.dispatch(fromActions.authLogin({ email, password }))
 
-    this.router.navigate([this.routers.DASHBOARD]).then();
+    // this.router.navigate([this.routers.DASHBOARD]).then();
   }
 
   public sendSignForm(): void {

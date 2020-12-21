@@ -12,9 +12,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { FormsModule } from '@angular/forms';
-
+import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardPageComponent } from './containers';
 import {
   VisitsChartComponent,
@@ -30,21 +30,13 @@ import { DashboardService } from './services';
 
 
 @NgModule({
-  declarations: [
-    DashboardPageComponent,
-    VisitsChartComponent,
-    PerformanceChartComponent,
-    ServerChartComponent,
-    RevenueChartComponent,
-    DailyLineChartComponent,
-    SupportRequestsComponent,
-    ProjectStatChartComponent
-  ],
+
   imports: [
+    SharedModule,
     CommonModule,
-    MatTableModule,
     NgxEchartsModule,
     TrendModule,
+    MatTableModule,
     MatCardModule,
     MatIconModule,
     MatMenuModule,
@@ -55,8 +47,18 @@ import { DashboardService } from './services';
     MatSelectModule,
     MatInputModule,
     NgApexchartsModule,
-    FormsModule,
-    SharedModule
+    MatDialogModule,
+    DashboardRoutingModule
+  ],
+  declarations: [
+    DashboardPageComponent,
+    // VisitsChartComponent,
+    // PerformanceChartComponent,
+    // ServerChartComponent,
+    // RevenueChartComponent,
+    // DailyLineChartComponent,
+    // SupportRequestsComponent,
+    // ProjectStatChartComponent
   ],
   exports: [
     DailyLineChartComponent

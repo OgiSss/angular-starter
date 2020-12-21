@@ -7,12 +7,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 
 import { AppComponent } from './app.component';
-import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
-import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { AuthModule } from './pages/auth/auth.module';
-
+import { CoreModule } from './core/core.module';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { DashboardModule } from './pages/dashboard/dashboard.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,15 +20,15 @@ import { AuthModule } from './pages/auth/auth.module';
   ],
   imports: [
     BrowserModule,
-    SharedModule,
-    AuthModule,
-    DashboardModule,
     BrowserAnimationsModule,
-    RouterModule,
+
+    CoreModule,
     AppRoutingModule,
+
     ToastrModule.forRoot(),
     MatCardModule,
-    MatButtonModule,
+    AngularFireModule.initializeApp(environment.firebase),
+
   ],
   providers: [],
   bootstrap: [AppComponent]

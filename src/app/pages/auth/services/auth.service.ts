@@ -1,3 +1,6 @@
+
+import { LocalStorageKeysEnum } from '@oksoftware/shared/enums/local-storage.enum';
+
 import { User } from '../models';
 
 import { Injectable } from '@angular/core';
@@ -17,7 +20,7 @@ export class AuthService {
   }
 
   public signOut(): void {
-    localStorage.removeItem('token');
+    // this.localStorageService.removeItem(LocalStorageKeysEnum.USER);
   }
 
   public getUser(): Observable<User> {

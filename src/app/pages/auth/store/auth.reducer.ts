@@ -1,12 +1,13 @@
+import { authLoginSuccessful, authLogout } from './actions/auth.actions';
 import { AuthState } from './models/auth.models';
-import { authLogin, authLoginSuccessful, authLogout } from './actions/auth.actions';
-import { createReducer, on, Action } from '@ngrx/store';
+
+import { Action, createReducer, on } from '@ngrx/store';
 
 export const initialState: AuthState = {
   isAuthenticated: false,
   tokens: undefined,
   name: undefined,
-  email: undefined
+  email: undefined,
 };
 
 const reducer = createReducer(
@@ -16,14 +17,14 @@ const reducer = createReducer(
     email,
     name,
     tokens: { refreshToken: tokens.refreshToken },
-    isAuthenticated: true
+    isAuthenticated: true,
   })),
-  on(authLogout, (state) => ({ ...state, isAuthenticated: false }))
+  on(authLogout, (state) => ({ ...state, isAuthenticated: false })),
 );
 
 export function authReducer(
   state: AuthState | undefined,
-  action: Action
+  action: Action,
 ): AuthState {
   return reducer(state, action);
 }

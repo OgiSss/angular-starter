@@ -1,35 +1,26 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-
-import { AuthService } from '../../services';
 import { routes } from '../../../../consts';
-import { Store } from '@ngrx/store';
-import { AuthState } from '../../store/models/auth.models';
-import * as fromActions from '../../store/actions/auth.actions';
+import { AuthFacade } from '../../store/facades';
+
+import { Component } from '@angular/core';
+
 @Component({
   selector: 'app-auth-page',
   templateUrl: './auth-page.component.html',
-  styleUrls: ['./auth-page.component.scss']
+  styleUrls: ['./auth-page.component.scss'],
 })
 export class AuthPageComponent {
   public todayDate: Date = new Date();
   public routers: typeof routes = routes;
 
-  constructor(
-    private service: AuthService,
-    private router: Router,
-    private store: Store<AuthState>
-  ) { }
+  constructor(private authFacade: AuthFacade) { }
 
   public sendLoginForm(email: string, password: string): void {
-    this.store.dispatch(fromActions.authLogin({ email, password }));
-
-    // this.router.navigate([this.routers.DASHBOARD]).then();
+    this.authFacade.login(email, password);
   }
 
   public sendSignForm(): void {
-    this.service.sign();
+    // this.service.sign();
 
-    this.router.navigate([this.routers.DASHBOARD]).then();
+    // this.router.navigate([this.routers.DASHBOARD]).then();
   }
 }

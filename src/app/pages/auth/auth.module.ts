@@ -1,6 +1,7 @@
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginFormComponent, SignFormComponent } from './components';
 import { AuthPageComponent } from './containers';
+import { AuthFacade } from './store/facades/auth.facades';
 import { YearPipe } from './pipes';
 import { AuthService } from './services';
 
@@ -28,6 +29,7 @@ import { MatTabsModule } from '@angular/material/tabs';
   ],
   providers: [
     AuthService,
+    AuthFacade,
   ],
 })
 export class AuthModule { }

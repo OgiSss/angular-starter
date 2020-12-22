@@ -36,7 +36,7 @@ export class HeaderComponent {
   }
 
   public signOut(): void {
-    this.userService.signOut();
+    this.userService.signOut(); // facade
 
     this.router.navigate([this.routers.LOGIN]);
   }

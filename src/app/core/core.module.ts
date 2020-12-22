@@ -1,11 +1,9 @@
-import { CommonModule } from '@angular/common';
 import {
     HttpClient,
     HttpClientModule,
     HTTP_INTERCEPTORS
 } from '@angular/common/http';
 import { ErrorHandler, NgModule, Optional, SkipSelf } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import {
     RouterStateSerializer,
@@ -19,7 +17,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { environment } from '../../environments/environment';
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { AuthGuardService } from '../pages/auth/guards/auth-guard.service';
 import { authLogin, authLogout } from '../pages/auth/store/actions/auth.actions';
 import { AuthEffects } from '../pages/auth/store/effects/auth.effects';
 import { selectAuth, selectIsAuthenticated } from '../pages/auth/store/selectors/auth.selectors';

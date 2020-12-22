@@ -1,16 +1,15 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { ofType, createEffect, Actions } from '@ngrx/effects';
-import { map, switchMap, tap } from 'rxjs/operators';
 
 import { LocalStorageService } from '@oksoftware/core/local-storage/local-storage.service';
-
-import { authLogin, authLoginSuccessful, authLogout } from '../actions/auth.actions';
-import { AuthService } from '../../services';
 import { LocalStorageKeysEnum } from '@oksoftware/shared/enums/local-storage.enum';
 import { NavigationEnum } from '@oksoftware/shared/enums/navigation.enum';
 
-export const AUTH_KEY = 'AUTH';
+import { AuthService } from '../../services';
+import { authLogin, authLoginSuccessful, authLogout } from '../actions/auth.actions';
+
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { map, switchMap, tap } from 'rxjs/operators';
 
 @Injectable()
 export class AuthEffects {
@@ -18,10 +17,13 @@ export class AuthEffects {
     () => this.actions$.pipe(
       ofType(authLogin),
       switchMap((payload) => this.auth.login(payload.email, payload.password).pipe(
-        map((result) => authLoginSuccessful({ tokens: { refreshToken: result.user.refreshToken }, name: result.user.displayName, email: result.user.email })),
+        map((result) => authLoginSuccessful({
+          tokens: { refreshToken: result.user.refreshToken },
+          name: result.user.displayName, email: result.user.email,
+        })),
         tap((result) => {
           this.localStorageService.setItem(LocalStorageKeysEnum.USER, JSON.stringify(result));
-          this.router.navigateByUrl(`/${NavigationEnum.Dashboard}`)
+          this.router.navigateByUrl(`/${NavigationEnum.Dashboard}`);
         }),
       ))),
   );
@@ -31,13 +33,11 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType(authLogout),
         tap(() => {
-          this.router.navigate(['']);
-          this.localStorageService.setItem(AUTH_KEY, {
-            isAuthenticated: false
-          });
-        })
+          this.localStorageService.setItem(LocalStorageKeysEnum.USER, null);
+          this.router.navigateByUrl(`/${NavigationEnum.Login}`);
+        }),
       ),
-    { dispatch: false }
+    { dispatch: false },
   );
 
   constructor(

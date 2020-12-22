@@ -44,7 +44,7 @@ import { MatCardModule } from '@angular/material/card';
   exports: [
     CommonModule,
     FormsModule,
-   
+
     HeaderModule,
     SidebarComponent,
     FooterComponent,

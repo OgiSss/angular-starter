@@ -1,21 +1,21 @@
-import { NgModule } from '@angular/core';
+import { AuthRoutingModule } from './auth-routing.module';
+import { LoginFormComponent, SignFormComponent } from './components';
+import { AuthPageComponent } from './containers';
+import { YearPipe } from './pipes';
+import { AuthService } from './services';
+
 import { CommonModule } from '@angular/common';
-import { MatTabsModule } from '@angular/material/tabs';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
-import { AuthPageComponent } from './containers';
-import { AuthRoutingModule } from './auth-routing.module';
-import { YearPipe } from './pipes';
-import { AuthService, EmailService } from './services';
-import { LoginFormComponent, SignFormComponent } from './components';
+import { MatTabsModule } from '@angular/material/tabs';
 @NgModule({
   declarations: [
     AuthPageComponent,
     YearPipe,
     LoginFormComponent,
-    SignFormComponent
+    SignFormComponent,
   ],
   imports: [
     CommonModule,
@@ -28,7 +28,6 @@ import { LoginFormComponent, SignFormComponent } from './components';
   ],
   providers: [
     AuthService,
-    EmailService,
-  ]
+  ],
 })
 export class AuthModule { }

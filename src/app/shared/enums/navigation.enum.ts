@@ -1,3 +1,4 @@
 export enum NavigationEnum {
-    Dashboard = 'dashboard'
+  Dashboard = 'dashboard',
+  Login = "Login"
 }

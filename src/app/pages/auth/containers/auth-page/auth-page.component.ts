@@ -22,7 +22,7 @@ export class AuthPageComponent {
   ) { }
 
   public sendLoginForm(email: string, password: string): void {
-    this.store.dispatch(fromActions.authLogin({ email, password }))
+    this.store.dispatch(fromActions.authLogin({ email, password }));
 
     // this.router.navigate([this.routers.DASHBOARD]).then();
   }

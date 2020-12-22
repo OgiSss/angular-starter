@@ -155,7 +155,14 @@
       {
         "import-sources-order": "lowercase-last",
         "named-imports-order": "case-insensitive",
-        "grouped-imports": true
+        "grouped-imports": true,
+        "groups": [
+          { "match": "^@oksoftware", "order": 20 },
+          { "match": "^@shared", "order": 30 },
+          { "name": "parent_dir", "match": "^[.][.]", "order": 40 },
+          { "name": "current dir", "match": "^[.]", "order": 50 },
+          { "match": null, "order": 10 }
+        ]
       }
     ],
     "only-arrow-functions": true,
@@ -215,7 +222,7 @@
     "no-empty": false,
     "no-empty-interface": true,
     "no-eval": true,
-    "no-implicit-dependencies": [true, "dev"],
+    "no-implicit-dependencies": [false, "dev"],
     "no-inferrable-types": [false, "ignore-params"],
     "no-attribute-decorator": true,
     "no-this-assignment": true,

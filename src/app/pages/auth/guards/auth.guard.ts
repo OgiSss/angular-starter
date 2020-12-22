@@ -1,9 +1,10 @@
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
-import { Injectable } from '@angular/core';
+import { LocalStorageService } from '@oksoftware/core/core.module';
+import { LocalStorageKeysEnum } from '@oksoftware/shared/enums/local-storage.enum';
 
 import { routes } from '../../../consts';
-import { LocalStorageKeysEnum } from '@oksoftware/shared/enums/local-storage.enum';
-import { LocalStorageService } from '@oksoftware/core/core.module';
+
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
@@ -16,8 +17,7 @@ export class AuthGuard implements CanActivate {
 
     if (user) {
       return true;
-    } else {
-      this.router.navigate([this.routers.LOGIN]);
     }
+    this.router.navigate([this.routers.LOGIN]);
   }
 }

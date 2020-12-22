@@ -1,10 +1,13 @@
+import { authLoginSuccessful, authLogout } from './actions/auth.actions';
 import { authReducer, initialState } from './auth.reducer';
 import { AuthState } from './models/auth.models';
-import { authLogin, authLogout } from './actions/auth.actions';
 
 describe('AuthReducer', () => {
   const TEST_INITIAL_STATE: AuthState = {
-    isAuthenticated: false
+    isAuthenticated: false,
+    email: undefined,
+    name: undefined,
+    tokens: undefined,
   };
 
   it('should return default state', () => {
@@ -15,7 +18,7 @@ describe('AuthReducer', () => {
   });
 
   it('should set authentication to true on login', () => {
-    const action = authLogin();
+    const action = authLoginSuccessful({ email: 'test@test.pl', name: 'name', tokens: { refreshToken: '124asdasd' } });
     const state = authReducer(TEST_INITIAL_STATE, action);
 
     expect(state.isAuthenticated).toBe(true);

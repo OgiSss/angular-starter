@@ -1,3 +1,6 @@
+import { colors } from '../../../../consts';
+import { HeatmapChartData } from '../../models';
+
 import { Component, Input, OnInit } from '@angular/core';
 import {
   ApexAxisChartSeries,
@@ -7,13 +10,10 @@ import {
   ApexNonAxisChartSeries, ApexResponsive,
   ApexStroke,
   ApexTooltip,
-  ApexXAxis
+  ApexXAxis,
 } from 'ng-apexcharts';
 
-import { HeatmapChartData } from '../../models';
-import { colors } from '../../../../consts';
-
-type ChartOptions = {
+interface ChartOptions {
   series: ApexAxisChartSeries | ApexNonAxisChartSeries;
   chart: ApexChart;
   xaxis: ApexXAxis;
@@ -27,19 +27,19 @@ type ChartOptions = {
   labels: string[];
   responsive: ApexResponsive[];
   fill: ApexFill;
-};
+}
 
 @Component({
   selector: 'app-heatmap-chart',
   templateUrl: './heatmap-chart.component.html',
-  styleUrls: ['./heatmap-chart.component.scss']
+  styleUrls: ['./heatmap-chart.component.scss'],
 })
 export class HeatmapChartComponent implements OnInit {
   @Input() heatmapChartData: HeatmapChartData;
   public apexHeatmapChartOptions: Partial<ChartOptions>;
 
   public ngOnInit(): void {
-    this.initChart()
+    this.initChart();
   }
 
   public initChart(): void {
@@ -49,18 +49,18 @@ export class HeatmapChartComponent implements OnInit {
         height: 350,
         type: 'heatmap',
         toolbar: {
-          show: false
-        }
+          show: false,
+        },
       },
       dataLabels: {
-        enabled: false
+        enabled: false,
       },
       colors: [colors.BLUE],
       xaxis: {
         labels: {
-          rotate: 0
-        }
-      }
+          rotate: 0,
+        },
+      },
     };
   }
 }

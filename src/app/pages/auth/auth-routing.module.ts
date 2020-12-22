@@ -1,20 +1,20 @@
-import { RouterModule, Routes } from '@angular/router';
-import { NgModule } from '@angular/core';
-
 import { AuthPageComponent } from './containers';
+
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
     path: '',
-    component: AuthPageComponent
-  }
+    component: AuthPageComponent,
+  },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 
 export class AuthRoutingModule {
